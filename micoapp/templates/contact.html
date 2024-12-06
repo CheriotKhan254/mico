@@ -1,0 +1,35 @@
+{% extends 'navigation.html' %}
+{% load static %}
+{% block body %}
+    <style>
+    .mydivstyle:hover {
+    box-shadow: 0 0 20px 0 rgba(0,0,0.3);
+    transform: translate(-20px);
+}
+    </style>
+
+    <div class="container" style="margin-top: 50px">
+    <h2 class="text-center">Contact Us</h2>
+        <br><br>
+    <div class="row mt-5 text-center">
+        <div class="col-lg-3 col-sm-6 mydivstyle">
+            <h4><i class="fas fa-phone-square"></i> Contact</h4>
+            <p class="mt-3 font-weight-bold text-danger"><a class="text-bg-danger" href="tel:+254 729099873"></a>+254 729099873</p>
+        </div>
+
+         <div class="col-lg-3 col-sm-6 mydivstyle">
+            <h4><i class="fas fa-envelope"></i> Send Email</h4>
+            <p class="mt-3 font-weight-bold text-danger"><a class="text-bg-danger" href="mailto:Ckipkorir05@gmail.com"></a>Ckipkorir05@gmail.com</p>
+        </div>
+
+        <div class="col-lg-3 col-sm-6 mydivstyle">
+            <h4><i class="fas fa-address-card"></i> Office Address</h4>
+            <p class="mt-3 font-weight-bold text-danger"><a class="text-bg-danger" href="http://maps.google.com/maps?q=Mico=Hospital"></a>MicoHospital</p>
+        </div>
+         <div class="col-lg-3 col-sm-6 mydivstyle">
+            <h4><i class="fas fa-address-card"></i> Office Hours</h4>
+            <p class="mt-3 font-weight-bold text-danger" >9:00 AM to 7:00PM</p>
+        </div>
+    </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,140 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HOSPITAL MANAGEMENT SYSTEM</title>
+      <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+      <!-- Add Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Add jQuery and Bootstrap JS (for dropdown functionality) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+{#      data tables#}
+      <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+      <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+      <script src="https://cdn.datatables.net/2.1.8/js/dataTables.bootstrap5.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.bootstrap5.css">
+      <script>
+          $(document).ready(function() {
+              $('#example').DataTable( {
+                  dom: 'Bfrtip',
+                  buttons: [
+                      'copyHTML5',
+                      'excellHTML5' +
+                      'csvHtml',
+                      'pdfHtml5'
+
+                  ]
+              ) }
+          ) };
+      </script>
+
+      $
+
+{#end of datatables#}
+
+        </head>
+  <body>
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Hospital Management System</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mymenu" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mymenu">
+
+
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        {% if not request.user.is_staff %}
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'login' %}"><i class="fa-solid fa-house"></i> HOME</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'about' %}">ABOUT</a>
+        </li>
+          <li class="nav-item">
+              <a class="nav-link" href="{% url 'contact.html' %}">CONTACT</a>
+          </li>
+        {% endif %}
+
+          {% if request.user.is_staff %}
+
+          <li class="nav-item">
+              <a class="nav-link" href="{% url 'logout.html' %}"><i class="fa-solid fa-house"></i> Logout</a>
+          </li>
+
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Doctor</a>
+          <div class="dropdown-menu">
+              <a class="dropdown-item" href="{% url 'add_doctor' %}">Add Doctor</a>
+              <a class="dropdown-item" href="{% url 'view_doctor' %}">View Doctor</a>
+          </div>
+          </li>
+
+
+
+
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Patient</a>
+          <div class="dropdown-menu">
+              <a class="dropdown-item" href="{% url 'add_patient' %}">Add Patient</a>
+              <a class="dropdown-item" href="{% url 'view_patient' %}">View Patient</a>
+
+          </div>
+          </li>
+
+         <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Appointment</a>
+          <div class="dropdown-menu">
+              <a class="dropdown-item" href="{% url 'add_appointment' %}">Add Appointment</a>
+              <a class="dropdown-item" href="{% url 'view_appointment' %}">View Appointment</a>
+          </div>
+          </li>
+
+
+
+          <li class="nav-item">
+              <a class="nav-link" href="{% url 'logout.html' %}">Logout</a>
+          </li>
+
+
+          {% endif %}
+{#        <li class="nav-item dropdown">#}
+{#          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">#}
+{#            Contact#}
+{#          </a>#}
+{#        </li>#}
+{#        <li class="nav-item">#}
+{#          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>#}
+{#        </li>#}
+      </ul>
+{#      <form class="d-flex">#}
+{#        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">#}
+{#        <button class="btn btn-outline-success" type="submit">Search</button>#}
+{#      </form>#}
+    </div>
+  </div>
+</nav>
+
+  {% block body %}
+
+
+
+  {% endblock %}
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+  </body>
+</html>
